@@ -59,4 +59,37 @@ describe Game do
       end
     end
   end
+
+  describe '#full?' do
+    context 'when the grid is full' do
+      before do
+        7.times do |col|
+          3.times do
+            game.insert_disc('r', col)
+            game.insert_disc('y', col)
+          end
+        end
+      end
+
+      it 'returns true' do
+        expect(game.full?).to be(false)
+      end
+    end
+
+    context 'when the board is neither full nor empty' do
+      before do
+        game.insert_disc('r', 0)
+        game.insert_disc('y', 6)
+      end
+      it 'returns false' do
+        expect(game.full?).to be(false)
+      end
+    end
+
+    context 'when the board is empty' do
+      it 'returns false' do
+        expect(game.full?).to be(true)
+      end
+    end
+  end
 end

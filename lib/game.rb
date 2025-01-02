@@ -10,6 +10,11 @@ class Game
     @grid.map { |row| row.map(&:itself) }
   end
 
+  def full?
+    @grid.each { |row| row.each { |item| return false unless item.nil? } }
+    true
+  end
+
   def insert_disc(player, column)
     (0..5).reverse_each do |row|
       if @grid[row][column].nil?
