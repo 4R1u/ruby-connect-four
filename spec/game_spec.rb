@@ -15,6 +15,7 @@ describe Game do
       before do
         game.insert_disc('r', 0)
       end
+
       it 'returns 4' do
         expect(game.insert_disc('y', 0)).to eq(4)
       end
