@@ -35,6 +35,18 @@ describe Game do
         expect(game.insert_disc('r', 0)).to be_nil
       end
     end
+
+    context 'when the column does not exist' do
+      it 'returns nil' do
+        expect(game.insert_disc('r', 8)).to be_nil
+      end
+    end
+
+    context 'when disc color is not r or y' do
+      it 'returns nil' do
+        expect(game.insert_disc('g', 0)).to be_nil
+      end
+    end
   end
 
   describe '#grid' do

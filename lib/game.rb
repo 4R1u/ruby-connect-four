@@ -16,6 +16,8 @@ class Game
   end
 
   def insert_disc(player, column)
+    return nil unless (0..6).cover?(column) && %w[r y].include?(player)
+
     (0..5).reverse_each do |row|
       if @grid[row][column].nil?
         @grid[row][column] = player
