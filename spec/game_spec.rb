@@ -104,4 +104,26 @@ describe Game do
       end
     end
   end
+
+  describe '#winner?' do
+    context 'when red wins horizontally' do
+      before do
+        4.times { |col| game.insert_disc('r', col) }
+      end
+
+      it 'returns true' do
+        expect(game.winner?('r')).to eq(true)
+      end
+    end
+
+    context 'when red only has three discs in a horizontal like' do
+      before do
+        3.times { |col| game.insert_disc('r', col) }
+      end
+
+      it 'returns false' do
+        expect(game.winner?('r')).to eq(false)
+      end
+    end
+  end
 end
