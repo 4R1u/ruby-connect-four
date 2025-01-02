@@ -28,8 +28,8 @@ class Game
   end
 
   def winner?(player)
-    horizontal_winner?(player) # ||
-    # vertical_winner?(player) # ||
+    horizontal_winner?(player) ||
+      vertical_winner?(player) # ||
     # diagonal_winner?(player)
   end
 
@@ -39,6 +39,17 @@ class Game
     in_a_row = 0
     @grid.each do |row|
       row.each do |item|
+        in_a_row += player == item ? 1 : -in_a_row
+        return true if in_a_row == 4
+      end
+    end
+    false
+  end
+
+  def vertical_winner?(player)
+    in_a_row = 0
+    @grid.transpose.each do |col|
+      col.each do |item|
         in_a_row += player == item ? 1 : -in_a_row
         return true if in_a_row == 4
       end

@@ -116,9 +116,29 @@ describe Game do
       end
     end
 
-    context 'when red only has three discs in a horizontal like' do
+    context 'when red only has three discs in a horizontal line' do
       before do
         3.times { |col| game.insert_disc('r', col) }
+      end
+
+      it 'returns false' do
+        expect(game.winner?('r')).to eq(false)
+      end
+    end
+
+    context 'when red wins vertically' do
+      before do
+        4.times { game.insert_disc('r', 0) }
+      end
+
+      it 'returns true' do
+        expect(game.winner?('r')).to eq(true)
+      end
+    end
+
+    context 'when red only has three discs in a vertical line' do
+      before do
+        3.times { game.insert_disc('r', 0) }
       end
 
       it 'returns false' do
