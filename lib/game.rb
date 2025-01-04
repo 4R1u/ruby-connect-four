@@ -79,16 +79,16 @@ class Game
     false
   end
 
-  def bslash?(i, j, player)
+  def bslash?(pos_i, pos_j, player)
     4.times do |k|
-      return false unless @grid[i + k][j + k] == player
+      return false unless @grid[pos_i + k][pos_j + k] == player
     end
     true
   end
 
-  def fslash?(i, j, player)
+  def fslash?(pos_i, pos_j, player)
     4.times do |k|
-      return false unless @grid[i + k][j - k] == player
+      return false unless @grid[pos_i + k][pos_j - k] == player
     end
     true
   end
