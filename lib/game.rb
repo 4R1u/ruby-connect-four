@@ -10,6 +10,13 @@ class Game
     @grid.map { |row| row.map(&:itself) }
   end
 
+  def display_grid
+    @grid.each do |row|
+      display_row(row)
+      print "\n"
+    end
+  end
+
   def full?
     @grid.each { |row| row.each { |item| return false if item.nil? } }
     true
@@ -34,6 +41,19 @@ class Game
   end
 
   private
+
+  def display_row(row)
+    row.each do |item|
+      case item
+      when nil
+        print ' '
+      when 'r'
+        print "\e[0;31;49mr\e[0m"
+      when 'y'
+        print "\e[0;33;49my\e[0m"
+      end
+    end
+  end
 
   def horizontal_winner?(player)
     in_a_row = 0
