@@ -11,7 +11,7 @@ class Game
   end
 
   def full?
-    @grid.each { |row| row.each { |item| return false unless item.nil? } }
+    @grid.each { |row| row.each { |item| return false if item.nil? } }
     true
   end
 

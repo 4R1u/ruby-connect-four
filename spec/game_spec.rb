@@ -84,7 +84,7 @@ describe Game do
       end
 
       it 'returns true' do
-        expect(game.full?).to be(false)
+        expect(game.full?).to be(true)
       end
     end
 
@@ -100,7 +100,7 @@ describe Game do
 
     context 'when the board is empty' do
       it 'returns false' do
-        expect(game.full?).to be(true)
+        expect(game.full?).to be(false)
       end
     end
   end
