@@ -145,5 +145,81 @@ describe Game do
         expect(game.winner?('r')).to eq(false)
       end
     end
+
+    context 'red wins in a forward slash' do
+      before do
+        game.insert_disc('r', 0)
+        game.insert_disc('y', 1)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 3)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 3)
+        game.insert_disc('r', 4)
+        game.insert_disc('y', 3)
+        game.insert_disc('r', 3)
+      end
+
+      it 'returns true' do
+        expect(game.winner?('r')).to eq(true)
+      end
+    end
+
+    context 'red only has three in a forward slash' do
+      before do
+        game.insert_disc('r', 0)
+        game.insert_disc('y', 1)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 3)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 3)
+        game.insert_disc('r', 4)
+      end
+
+      it 'returns false' do
+        expect(game.winner?('r')).to eq(false)
+      end
+    end
+
+    context 'red wins in a backward slash' do
+      before do
+        game.insert_disc('r', 3)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 1)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 0)
+        game.insert_disc('r', 0)
+        game.insert_disc('y', 0)
+        game.insert_disc('r', 0)
+      end
+
+      it 'returns true' do
+        expect(game.winner?('r')).to eq(true)
+      end
+    end
+
+    context 'red only has three in a backward slash' do
+      before do
+        game.insert_disc('r', 3)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 2)
+        game.insert_disc('y', 2)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 1)
+        game.insert_disc('r', 1)
+        game.insert_disc('y', 0)
+        game.insert_disc('r', 0)
+      end
+
+      it 'returns false' do
+        expect(game.winner?('r')).to eq(false)
+      end
+    end
   end
 end

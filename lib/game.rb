@@ -29,8 +29,8 @@ class Game
 
   def winner?(player)
     horizontal_winner?(player) ||
-      vertical_winner?(player) # ||
-    # diagonal_winner?(player)
+      vertical_winner?(player) ||
+      diagonal_winner?(player)
   end
 
   private
@@ -55,5 +55,41 @@ class Game
       end
     end
     false
+  end
+
+  def diagonal_winner?(player)
+    winner_in_a_bslash?(player) || winner_in_a_fslash?(player)
+  end
+
+  def winner_in_a_fslash?(player)
+    3.times do |i|
+      (3..7).each do |j|
+        return true if @grid[i][j] == player && fslash?(i, j, player)
+      end
+    end
+    false
+  end
+
+  def winner_in_a_bslash?(player)
+    3.times do |i|
+      4.times do |j|
+        return true if @grid[i][j] == player && bslash?(i, j, player)
+      end
+    end
+    false
+  end
+
+  def bslash?(i, j, player)
+    4.times do |k|
+      return false unless @grid[i + k][j + k] == player
+    end
+    true
+  end
+
+  def fslash?(i, j, player)
+    4.times do |k|
+      return false unless @grid[i + k][j - k] == player
+    end
+    true
   end
 end
