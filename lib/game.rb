@@ -48,9 +48,9 @@ class Game
       when nil
         print ' '
       when 'r'
-        print "\e[0;31;49mr\e[0m"
+        print "\e[0;31;49m⚫\e[0m"
       when 'y'
-        print "\e[0;33;49my\e[0m"
+        print "\e[0;33;49m⚫\e[0m"
       end
     end
   end
